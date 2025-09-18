@@ -1,8 +1,6 @@
 # UV virtual environment and Unsloth fine-tuning compatible scripts.
 A streamlined example for fine-tuning Llama-3.2-1B models using UV Package Manager and Unsloth libraries on Linux.
 
-## Quick Start
-
 ## 🛠️ Dependencies
 
 ### System Requirements
@@ -25,6 +23,7 @@ sudo apt install -y python3.12-dev
 - **Validation**: scikit-learn, matplotlib
 - **Interactive UI**: gradio, streamlit
 
+## Quick Start
 
 ### 1. Install UV Package Manager
 
