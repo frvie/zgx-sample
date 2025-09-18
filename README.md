@@ -1,6 +1,21 @@
 # Unsloth Llama-3.2-1B Fine-tuning
 
-A streamlined toolkit for fine-tuning Llama-3.2-1B models using Unsloth for 2x faster training.
+A streamlined toolkit for fine-tuning Llama-3.2-1B models using## 📁 Project Structure
+
+```
+unsloth/
+├── unsloth-finetune-llama3_2-1B.py    # Main training script
+├── download_datasets.py               # Dataset preparation utility
+├── gradio_chatbot.py                  # Gradio web interface for testing
+├── streamlit_chatbot.py               # Streamlit web interface for testing
+├── launch_chatbot.sh                  # Easy launcher for chatbot interfaces
+├── datasets/                          # Training datasets
+│   ├── alpaca_dataset.json
+│   ├── dolly_dataset.json
+│   └── mixed_dataset.json
+├── pyproject.toml                      # Project dependencies
+└── README.md                          # This file
+```2x faster training.
 
 ## 🚀 Quick Start
 
@@ -52,6 +67,49 @@ python unsloth-finetune-llama3_2-1B.py \
   --max_steps 200 \
   --resume_from_checkpoint ./my_finetuned_model/checkpoint-100 \
   --output_dir ./my_finetuned_model
+```
+
+### 4. Interactive Testing with Chatbot Interfaces
+
+#### 🎨 Gradio Interface (Recommended)
+```bash
+# Launch Gradio chatbot with default model
+./launch_chatbot.sh
+
+# Launch with specific model and port
+./launch_chatbot.sh -m ./llama32_mixed_finetuned -p 7860
+
+# Create public sharing link
+./launch_chatbot.sh -s
+```
+
+#### 📊 Streamlit Interface
+```bash
+# Launch Streamlit chatbot
+./launch_chatbot.sh -i streamlit
+
+# Custom port
+./launch_chatbot.sh -i streamlit -p 8501
+```
+
+#### 🔧 Manual Testing
+```python
+from unsloth import FastLanguageModel
+import torch
+
+# Load your fine-tuned model
+model, tokenizer = FastLanguageModel.from_pretrained(
+    model_name="./llama32_mixed_finetuned",
+    max_seq_length=2048,
+    dtype=torch.bfloat16,
+    load_in_4bit=True,
+)
+
+# Test with a prompt
+FastLanguageModel.for_inference(model)
+inputs = tokenizer(["### Instruction:\nWrite a story about AI\n\n### Response:\n"], return_tensors="pt")
+outputs = model.generate(**inputs, max_new_tokens=100)
+print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 ```
 
 ## � Project Structure
@@ -127,6 +185,7 @@ Core requirements (automatically installed):
 - Unsloth (latest)
 - Datasets, PEFT, TRL
 - Validation: scikit-learn, matplotlib
+- Interactive UI: gradio, streamlit
 
 ## 📝 License
 
