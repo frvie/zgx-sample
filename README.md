@@ -1,4 +1,4 @@
-# Unsloth Llama-3.2-1B Fine-tuning
+# Sample package for creating a UV virtual environment and Unsloth fine-tuning compatible scripts.
 
 A streamlined toolkit for fine-tuning Llama-3.2-1B models using## 📁 Project Structure
 
