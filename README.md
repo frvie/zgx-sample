@@ -51,8 +51,10 @@ deactivate
 ```bash
 # Verify GPU and PyTorch setup
 python -c "import torch; print(f'PyTorch: {torch.__version__}, CUDA: {torch.cuda.is_available()}, GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"No GPU\"}')"
+```
 
 # Verify Unsloth installation
+```bash
 python -c "from unsloth import FastLanguageModel; print('✅ Unsloth installed successfully')"
 ```
 
