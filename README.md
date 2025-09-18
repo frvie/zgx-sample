@@ -1,7 +1,30 @@
 # UV virtual environment and Unsloth fine-tuning compatible scripts.
-A streamlined toolkit for fine-tuning Llama-3.2-1B models using Unsloth.
+A streamlined example for fine-tuning Llama-3.2-1B models using UV Package Manager and Unsloth libraries on Linux.
 
 ## Quick Start
+
+## 🛠️ Dependencies
+
+### System Requirements
+
+Before installing Python dependencies, ensure the following system packages are installed for compiling capabilities and Python development:
+
+```bash
+# Compiling capabilities enabled
+sudo apt update && sudo apt install -y build-essential gcc g++ make
+
+# Python development headers
+sudo apt install -y python3.12-dev
+```
+
+### Core Requirements (managed by UV)
+- **PyTorch 2.8.0+** with CUDA 12.8 support
+- **Unsloth** for fast fine-tuning
+- **Transformers 4.55.0+** for model handling
+- **Datasets, PEFT, TRL** for training pipeline
+- **Validation**: scikit-learn, matplotlib
+- **Interactive UI**: gradio, streamlit
+
 
 ### 1. Install UV Package Manager
 
@@ -200,24 +223,4 @@ After 200 training steps:
 3. **Resume training**: Save time with `--resume_from_checkpoint`
 4. **GPU optimization**: Unsloth automatically optimizes for your hardware
 
-## 🛠️ Dependencies
 
-### System Requirements
-
-Before installing Python dependencies, ensure the following system packages are installed for compiling capabilities and Python development:
-
-```bash
-# Compiling capabilities enabled
-sudo apt update && sudo apt install -y build-essential gcc g++ make
-
-# Python development headers
-sudo apt install -y python3.12-dev
-```
-
-### Core Requirements (managed by UV)
-- **PyTorch 2.8.0+** with CUDA 12.8 support
-- **Unsloth** for fast fine-tuning
-- **Transformers 4.55.0+** for model handling
-- **Datasets, PEFT, TRL** for training pipeline
-- **Validation**: scikit-learn, matplotlib
-- **Interactive UI**: gradio, streamlit
