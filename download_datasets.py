@@ -7,8 +7,6 @@ This script downloads popular instruction-following datasets and formats them pr
 import json
 import os
 from datasets import load_dataset
-from dataset_utils import DatasetLoader, DatasetFormatter
-from transformers import AutoTokenizer
 import argparse
 
 
