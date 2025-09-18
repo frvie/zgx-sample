@@ -1,24 +1,5 @@
 # Sample package for creating a UV virtual environment and Unsloth fine-tuning compatible scripts.
-
-A streamlined toolkit for fine-tuning Llama-3.2-1B models using Unsloth for 2x faster training.
-
-## 🛠️ Prerequisites## 📁 Project Structure
-
-```
-unsloth/
-├── unsloth-finetune-llama3_2-1B.py    # Main training script
-├── download_datasets.py               # Dataset preparation utility
-├── gradio_chatbot.py                  # Gradio web interface for testing
-├── streamlit_chatbot.py               # Streamlit web interface for testing
-├── launch_chatbot.sh                  # Easy launcher for chatbot interfaces
-├── datasets/                          # Training datasets
-│   ├── alpaca_dataset.json
-│   ├── dolly_dataset.json
-│   └── mixed_dataset.json
-├── pyproject.toml                      # Project dependencies and metadata
-├── .venv/                             # UV virtual environment
-└── README.md                          # This file
-```
+A streamlined toolkit for fine-tuning Llama-3.2-1B models using Unsloth.
 
 ## Quick Start
 
@@ -34,7 +15,16 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 pip install uv
 ```
 
-### 2. Environment Setup with UV
+### 2. Navigate to the Repository Folder & Environment Setup with UV
+
+Before creating the virtual environment, make sure you are in the folder where you cloned this repository:
+
+```bash
+cd path/to/zgx-sample
+```
+
+Then, set up the environment:
+
 ```bash
 # Create environment and sync with pyproject.toml in one command
 uv sync
@@ -212,6 +202,18 @@ After 200 training steps:
 
 ## 🛠️ Dependencies
 
+### System Requirements
+
+Before installing Python dependencies, ensure the following system packages are installed for compiling capabilities and Python development:
+
+```bash
+# Compiling capabilities enabled
+sudo apt update && sudo apt install -y build-essential gcc g++ make
+
+# Python development headers
+sudo apt install -y python3.12-dev
+```
+
 ### Core Requirements (managed by UV)
 - **PyTorch 2.8.0+** with CUDA 12.8 support
 - **Unsloth** for fast fine-tuning
@@ -219,5 +221,3 @@ After 200 training steps:
 - **Datasets, PEFT, TRL** for training pipeline
 - **Validation**: scikit-learn, matplotlib
 - **Interactive UI**: gradio, streamlit
-
-
