@@ -36,24 +36,6 @@ source .venv/bin/activate  # Linux/macOS
 deactivate
 ```
 
-### Dependency Management
-```bash
-# Add new dependency
-uv add package_name
-
-# Add development dependency
-uv add --dev pytest
-
-# Remove dependency
-uv remove package_name
-
-# Update all dependencies
-uv lock --upgrade
-
-# Install from lock file
-uv sync
-```
-
 ### Project Commands
 ```bash
 # Run script with UV
@@ -64,13 +46,6 @@ uv run --python 3.12 python unsloth-finetune-llama3_2-1B.py
 
 # Show project info
 uv info
-
-# Export requirements
-uv export --format requirements-txt > requirements.txt
-```age Manager**: Fast Python package and project manager
-- **CUDA 12.8+**: For GPU acceleration
-- **RTX 5090** or similar high-end GPU
-- **Python 3.12+**
 
 ## 🚀 Quick Start
 
@@ -87,28 +62,6 @@ pip install uv
 ```
 
 ### 2. Environment Setup with UV
-
-#### Create New Virtual Environment from pyproject.toml
-
-```bash
-# Clone or navigate to the project directory
-cd /path/to/unsloth
-
-# Create virtual environment and install all dependencies
-uv venv --python 3.12
-source .venv/bin/activate
-
-# Install project dependencies from pyproject.toml
-uv pip install -e .
-
-# Or install dependencies manually
-uv pip install torch==2.8.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
-uv pip install unsloth[cu128_ampere_flash_attn] transformers accelerate peft trl datasets
-uv pip install scikit-learn matplotlib gradio streamlit
-```
-
-#### Alternative: Use UV Sync (Recommended)
-
 ```bash
 # Create environment and sync with pyproject.toml in one command
 uv sync
@@ -289,25 +242,7 @@ After 200 training steps:
 - **Validation**: scikit-learn, matplotlib
 - **Interactive UI**: gradio, streamlit
 
-### Installation Methods
 
-#### Method 1: UV Sync (Recommended)
-```bash
-uv sync  # Installs everything from pyproject.toml
-```
-
-#### Method 2: Manual UV Installation
-```bash
-uv pip install torch==2.8.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
-uv pip install unsloth[cu128_ampere_flash_attn]
-uv pip install transformers accelerate peft trl datasets
-uv pip install scikit-learn matplotlib gradio streamlit
-```
-
-#### Method 3: Traditional pip (fallback)
-```bash
-pip install -e .
-```
 
 ## 📝 License
 
