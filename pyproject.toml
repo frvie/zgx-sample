@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "torch>=2.8.0",
-    "transformers>=4.55.0", 
+    "transformers>=4.55.0",
     "accelerate>=0.34.0",
     "datasets>=3.0.0",
     "peft>=0.12.0",
@@ -20,6 +20,8 @@ dependencies = [
     "seaborn>=0.13.0",
     "gradio>=4.0.0",
     "streamlit>=1.28.0",
+    "unsloth>=2025.9.6",
+    "ninja>=1.13.0",
 ]
 
 [project.optional-dependencies]
@@ -57,3 +59,8 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
+
+[tool.uv.workspace]
+members = [
+    "zgx",
+]
