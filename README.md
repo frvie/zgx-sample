@@ -20,34 +20,7 @@ unsloth/
 └── README.md                          # This file
 ```
 
-## ⚡ UV Package Manager Features
-
-### Environment Management
-```bash
-# Create new environment
-uv venv --python 3.12
-
-# Activate environment
-source .venv/bin/activate  # Linux/macOS
-# or
-.venv\Scripts\activate     # Windows
-
-# Deactivate environment
-deactivate
-```
-
-### Project Commands
-```bash
-# Run script with UV
-uv run python download_datasets.py
-
-# Run with specific Python version
-uv run --python 3.12 python unsloth-finetune-llama3_2-1B.py
-
-# Show project info
-uv info
-
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Install UV Package Manager
 
@@ -68,6 +41,9 @@ uv sync
 
 # Activate the environment
 source .venv/bin/activate
+
+# Deactivate environment
+deactivate
 ```
 
 #### Verify Installation
