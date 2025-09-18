@@ -264,7 +264,7 @@ def main():
     print(f"📁 Datasets saved in: {args.output_dir}")
     print(f"\n🚀 Ready for training! Use with:")
     for dataset_path in downloaded_datasets:
-        print(f"   python finetune_tinyllama.py --dataset_path {dataset_path}")
+        print(f"   python unsloth-finetune-llama3_2-1B.py --dataset_path {dataset_path}")
 
 
 if __name__ == "__main__":
