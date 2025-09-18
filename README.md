@@ -46,19 +46,19 @@ source .venv/bin/activate
 deactivate
 ```
 
-#### Verify Installation
+### 3. Verify Cuda Installation
 
 ```bash
 # Verify GPU and PyTorch setup
 python -c "import torch; print(f'PyTorch: {torch.__version__}, CUDA: {torch.cuda.is_available()}, GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"No GPU\"}')"
 ```
 
-# Verify Unsloth installation
+### 4. Verify Unsloth installation
 ```bash
 python -c "from unsloth import FastLanguageModel; print('✅ Unsloth installed successfully')"
 ```
 
-### 3. Dataset Preparation
+### 5. Dataset Preparation
 ```bash
 # Download and prepare datasets
 python download_datasets.py
@@ -67,7 +67,7 @@ python download_datasets.py
 python download_datasets.py --dataset all --create_mixed
 ```
 
-### 4. Training
+### 6. Training
 
 #### Basic Training
 ```bash
@@ -102,7 +102,7 @@ python unsloth-finetune-llama3_2-1B.py \
   --output_dir ./my_finetuned_model
 ```
 
-### 5. Interactive Testing with Chatbot Interfaces
+### 7. Interactive Testing with Chatbot Interfaces
 
 #### 🎨 Gradio Interface (Recommended)
 ```bash
@@ -221,7 +221,3 @@ After 200 training steps:
 - **Interactive UI**: gradio, streamlit
 
 
-
-## 📝 License
-
-This project uses Unsloth's free license for educational and research purposes.
