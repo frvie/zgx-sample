@@ -1,6 +1,8 @@
 # Unsloth Llama-3.2-1B Fine-tuning
 
-A streamlined toolkit for fine-tuning Llama-3.2-1B models using## 📁 Project Structure
+A streamlined toolkit for fine-tuning Llama-3.2-1B models using Unsloth for 2x faster training.
+
+## 🛠️ Prerequisites## 📁 Project Structure
 
 ```
 unsloth/
@@ -13,28 +15,128 @@ unsloth/
 │   ├── alpaca_dataset.json
 │   ├── dolly_dataset.json
 │   └── mixed_dataset.json
-├── pyproject.toml                      # Project dependencies
+├── pyproject.toml                      # Project dependencies and metadata
+├── .venv/                             # UV virtual environment
 └── README.md                          # This file
-```2x faster training.
+```
+
+## ⚡ UV Package Manager Features
+
+### Environment Management
+```bash
+# Create new environment
+uv venv --python 3.12
+
+# Activate environment
+source .venv/bin/activate  # Linux/macOS
+# or
+.venv\Scripts\activate     # Windows
+
+# Deactivate environment
+deactivate
+```
+
+### Dependency Management
+```bash
+# Add new dependency
+uv add package_name
+
+# Add development dependency
+uv add --dev pytest
+
+# Remove dependency
+uv remove package_name
+
+# Update all dependencies
+uv lock --upgrade
+
+# Install from lock file
+uv sync
+```
+
+### Project Commands
+```bash
+# Run script with UV
+uv run python download_datasets.py
+
+# Run with specific Python version
+uv run --python 3.12 python unsloth-finetune-llama3_2-1B.py
+
+# Show project info
+uv info
+
+# Export requirements
+uv export --format requirements-txt > requirements.txt
+```age Manager**: Fast Python package and project manager
+- **CUDA 12.8+**: For GPU acceleration
+- **RTX 5090** or similar high-end GPU
+- **Python 3.12+**
 
 ## 🚀 Quick Start
 
-### 1. Environment Setup
-```bash
-# Activate virtual environment
-source .venv/bin/activate
+### 1. Install UV Package Manager
 
-# Verify installation
-python -c "import torch; print(f'PyTorch: {torch.__version__}, CUDA: {torch.cuda.is_available()}')"
+If you don't have UV installed:
+
+```bash
+# Install UV (Linux/macOS)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Or with pip
+pip install uv
 ```
 
-### 2. Dataset Preparation
+### 2. Environment Setup with UV
+
+#### Create New Virtual Environment from pyproject.toml
+
+```bash
+# Clone or navigate to the project directory
+cd /path/to/unsloth
+
+# Create virtual environment and install all dependencies
+uv venv --python 3.12
+source .venv/bin/activate
+
+# Install project dependencies from pyproject.toml
+uv pip install -e .
+
+# Or install dependencies manually
+uv pip install torch==2.8.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+uv pip install unsloth[cu128_ampere_flash_attn] transformers accelerate peft trl datasets
+uv pip install scikit-learn matplotlib gradio streamlit
+```
+
+#### Alternative: Use UV Sync (Recommended)
+
+```bash
+# Create environment and sync with pyproject.toml in one command
+uv sync
+
+# Activate the environment
+source .venv/bin/activate
+```
+
+#### Verify Installation
+
+```bash
+# Verify GPU and PyTorch setup
+python -c "import torch; print(f'PyTorch: {torch.__version__}, CUDA: {torch.cuda.is_available()}, GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"No GPU\"}')"
+
+# Verify Unsloth installation
+python -c "from unsloth import FastLanguageModel; print('✅ Unsloth installed successfully')"
+```
+
+### 3. Dataset Preparation
 ```bash
 # Download and prepare datasets
 python download_datasets.py
+
+# Download all datasets and create mixed dataset
+python download_datasets.py --dataset all --create_mixed
 ```
 
-### 3. Training
+### 4. Training
 
 #### Basic Training
 ```bash
@@ -69,7 +171,7 @@ python unsloth-finetune-llama3_2-1B.py \
   --output_dir ./my_finetuned_model
 ```
 
-### 4. Interactive Testing with Chatbot Interfaces
+### 5. Interactive Testing with Chatbot Interfaces
 
 #### 🎨 Gradio Interface (Recommended)
 ```bash
@@ -179,13 +281,33 @@ After 200 training steps:
 
 ## 🛠️ Dependencies
 
-Core requirements (automatically installed):
-- PyTorch 2.8.0+
-- Transformers 4.55.0+
-- Unsloth (latest)
-- Datasets, PEFT, TRL
-- Validation: scikit-learn, matplotlib
-- Interactive UI: gradio, streamlit
+### Core Requirements (managed by UV)
+- **PyTorch 2.8.0+** with CUDA 12.8 support
+- **Unsloth** for fast fine-tuning
+- **Transformers 4.55.0+** for model handling
+- **Datasets, PEFT, TRL** for training pipeline
+- **Validation**: scikit-learn, matplotlib
+- **Interactive UI**: gradio, streamlit
+
+### Installation Methods
+
+#### Method 1: UV Sync (Recommended)
+```bash
+uv sync  # Installs everything from pyproject.toml
+```
+
+#### Method 2: Manual UV Installation
+```bash
+uv pip install torch==2.8.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+uv pip install unsloth[cu128_ampere_flash_attn]
+uv pip install transformers accelerate peft trl datasets
+uv pip install scikit-learn matplotlib gradio streamlit
+```
+
+#### Method 3: Traditional pip (fallback)
+```bash
+pip install -e .
+```
 
 ## 📝 License
 
